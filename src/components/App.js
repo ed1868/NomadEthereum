@@ -8,7 +8,17 @@ import Main from './Main'
 
 
 class App extends Component {
-
+  async loadWeb3() {
+    if (window.ethereum) {
+      window.web3 = new Web3(window.ethereum)
+      await window.ethereum.enable()
+    }
+    else if (window.web3) {
+      window.web3 = new Web3(window.web3.currentProvidor)
+    } else {
+      window.alert('Non-ethereum browser detected.');
+    }
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -23,9 +33,9 @@ class App extends Component {
         { this.state.loading
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
-            // Code...
-            />
-          }
+          // Code...
+          />
+        }
         }
       </div>
     );
