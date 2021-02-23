@@ -17,6 +17,7 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvidor)
     } else {
       window.alert('Non-ethereum browser detected.');
+      console.log('WTF')
     }
   }
   constructor(props) {
