@@ -8,6 +8,10 @@ import Main from './Main'
 
 
 class App extends Component {
+  async componentWillMount() {
+    await this.loadWeb3();
+    await this.loadBlockchainData();
+  }
   async loadWeb3() {
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
@@ -17,8 +21,14 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvidor)
     } else {
       window.alert('Non-ethereum browser detected.');
-      console.log('WTF')
     }
+  }
+
+  async loadBlockchainData() {
+    const web3 = window.web3;
+    const accounts = await web3.eth.getAccounts();
+    console.log(accounts[0])
+
   }
   constructor(props) {
     super(props)
