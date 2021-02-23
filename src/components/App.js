@@ -26,10 +26,19 @@ class App extends Component {
 
   async loadBlockchainData() {
     const web3 = window.web3;
+    //LOAD ACCOUNT
     const accounts = await web3.eth.getAccounts();
     console.log(accounts[0]);
-
     this.setState({ account: accounts[0] })
+    //LOAD NETWORK ID 
+    const networkId = await web3.eth.net.getId();
+    const networkData = Decentragram.networks[networkId]
+    if (networkData) {
+      const decentragram = web3.eth.Contract(Decentragram.abi, networkData.address);
+    } else {
+      window.alert("THIS CONTRACT NOT DEPLOYD TO DETECTED NETWORK BRUH");
+    }
+
 
   }
   constructor(props) {
