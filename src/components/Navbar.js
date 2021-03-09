@@ -13,7 +13,7 @@ class Navbar extends Component {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={photo} width="30" height="30" className="d-inline-block align-top" alt="" />
+          <img src={photo} width="30" height="30" className="d-inline-block align-top mr-3" alt="" />
           Nomads
         </a>
         <ul className="navbar-nav px-3">
