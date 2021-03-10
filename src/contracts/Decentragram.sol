@@ -11,6 +11,32 @@ contract Decentragram {
 
     mapping(uint256 => Image) public images;
 
+    struct Scripture {
+        uint256 id;
+        string hash;
+        string title;
+        string text;
+        uint256 tipAmount;
+        address payable author;
+    }
+
+    event ScriptureCreated(
+        uint256 id,
+        string hash,
+        string title,
+        string text,
+        uint256 tipAmount,
+        address payable author
+    );
+
+    event ScriptureTipped(
+        uint256 id,
+        string hash,
+        string description,
+        uint256 tipAmount,
+        address payable author
+    );
+    
     struct Image {
         uint256 id;
         string hash;
